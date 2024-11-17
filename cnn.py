@@ -251,7 +251,7 @@ def test_model(input_audio_path, output_audio_path, model, device, sample_rate=4
     output_imag = output_value[num_freq_bins:]
     reconstructed_spectrum = output_real + 1j * output_imag
 
-    # 恢复 19000 Hz 以下的频率为零
+    # 设置19000Hz频率以下的Magnitude为零
     reconstructed_spectrum = np.concatenate([np.zeros(cutoff_index), reconstructed_spectrum])
 
     reconstructed_waveform = np.fft.ifft(reconstructed_spectrum).real
